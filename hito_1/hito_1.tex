@@ -1,0 +1,747 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Hito 1 - Grupo 11},
+  pdfauthor={Vicente Guzmán, Ignacio Muñoz, José Arriagada, Nicolás Gonzalez y Javier Atenas},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Hito 1 - Grupo 11}
+\author{Vicente Guzmán, Ignacio Muñoz, José Arriagada, Nicolás Gonzalez
+y Javier Atenas}
+\date{24 de Abril 2023}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hfill\break
+
+\hypertarget{introducciuxf3n}{%
+\subsection{Introducción}\label{introducciuxf3n}}
+
+Steam es la plataforma líder de distribución digital de videojuegos en
+PC, y este mercado cada vez tiene más consumidores y va ganando terreno
+por sobre otras formas de entretención. Esto lo demuestra su co-fundador
+Gabe Newell, el cual con su plataforma es uno de los 1000 hombres más
+ricos del mundo. Siendo este un mercado en constante cambio con millones
+de usuarios, vale la pena investigar sobre su contenido, junto a sus
+ascensos y caídas. Estudiar este dataset podría ayudar a entender las
+preferencias en el mercado de los videojuegos, cuáles son los más
+vendidos y cuáles tienen las mejores valoraciones, entre otros
+estudios.\\
+
+\hypertarget{exploraciuxf3n-de-datos}{%
+\subsection{Exploración de Datos}\label{exploraciuxf3n-de-datos}}
+
+Este dataset posee datos de más de 27.000 juegos y algunos pocos
+softwares estrenados hasta el 2019 en formato CSV. Tiene datos como el
+nombre, la descripción, la categoría, el género, los logros de cada
+juego, la fecha de lanzamiento, el desarrollador, el \emph{publisher},
+la edad requerida para jugar el juego, la cantidad de gente que posee el
+juego, el precio, el promedio del tiempo de juego de los usuarios y la
+puntuación positivas y negativa de los usuarios. Por como está definido
+este dataset, la columna ``género'', al ser de tipo string, cualquier
+dato que se encuentre es un tipo diferente, a menos que sea exactamente
+igual a otro. (Ej: ``action'' es un género diferente a ``action;Indie'',
+a pesar de que a nuestro entendimiento, si son del mismo género). Por lo
+que si se quisiera revisar todos los juegos que sean del género
+``action'', saldrían solamente aquellos juegos que tuviesen como único
+género ``action''. Esto ocurre con varias columnas, por lo que a futuro,
+se tendrá que modificar o encontrar una forma, para lograr encontrar de
+manera efectiva varios datos específicos que quisiéramos ver.\\
+
+\hypertarget{preguntas-y-problemas}{%
+\subsection{Preguntas y Problemas}\label{preguntas-y-problemas}}
+
+\begin{itemize}
+\item
+  ¿Cuáles son los géneros que generan más ingresos?
+\item
+  ¿Qué géneros tienen un mejor porcentaje de reviews positivas?
+\item
+  ¿Existe una relación entre el tiempo promedio de juego y sus reviews?
+  Hipótesis: Hay una relación directa entre las reviews de un juego y
+  tiempo de juego, ya que si un jugador no disfruta un juego y le
+  escribe una mala review, tampoco querrá jugarlo, por lo tanto los
+  juegos con altos tiempos de juego tendrán mejores reviews.
+\item
+  ¿Qué relación hay entre el precio de un juego y su tiempo de juego
+  promedio? Hipótesis: Hay una relación directa entre el precio de un
+  juego y tiempo de juego, ya que los usuarios ``harán valer'' el dinero
+  invertido, haciendo que jueguen un juego caro mucho más que uno
+  gratis, para sentir que valió la pena.
+\item
+  ¿Los juegos con más logros tienen más tiempo de juego que los juegos
+  con menos logros?
+\item
+  ¿Los \emph{publishers} influyen en la cantidad de ventas de un juego?
+  Hipótesis: Si, pues los \emph{publishers} más conocidos harán que el
+  juego se destaque más en el mercado, pues da el sello de garantía de
+  que ellos lo aprobaron, y si la gente confía en ellos, confiarán en
+  este nuevo juego. Mientras que los \emph{indies}.\\
+\end{itemize}
+
+\hypertarget{cuxf3digo-fuente}{%
+\subsection{Código Fuente}\label{cuxf3digo-fuente}}
+
+Se anexa el código fuente utilizado para la exploración de datos con su
+respectiva función.
+
+\hypertarget{dataset-de-los-juegos-de-steam}{%
+\paragraph{Dataset de los juegos de
+Steam}\label{dataset-de-los-juegos-de-steam}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Asignamos nuestro "working directory" (set w. d.) como el directorio \textasciitilde{}/RDATA}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/elviz/Desktop/UChile/9no/mineria/Proyecto{-}Mineria{-}2023{-}1/db"}\NormalTok{)}
+\NormalTok{steam }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"steam.csv"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(steam)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   appid                      name release_date english        developer
+## 1    10            Counter-Strike   2000-11-01       1            Valve
+## 2    20     Team Fortress Classic   1999-04-01       1            Valve
+## 3    30             Day of Defeat   2003-05-01       1            Valve
+## 4    40        Deathmatch Classic   2001-06-01       1            Valve
+## 5    50 Half-Life: Opposing Force   1999-11-01       1 Gearbox Software
+## 6    60                  Ricochet   2000-11-01       1            Valve
+##   publisher         platforms required_age
+## 1     Valve windows;mac;linux            0
+## 2     Valve windows;mac;linux            0
+## 3     Valve windows;mac;linux            0
+## 4     Valve windows;mac;linux            0
+## 5     Valve windows;mac;linux            0
+## 6     Valve windows;mac;linux            0
+##                                                                     categories
+## 1 Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 2 Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 3                                        Multi-player;Valve Anti-Cheat enabled
+## 4 Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 5                          Single-player;Multi-player;Valve Anti-Cheat enabled
+## 6                    Multi-player;Online Multi-Player;Valve Anti-Cheat enabled
+##   genres                steamspy_tags achievements positive_ratings
+## 1 Action       Action;FPS;Multiplayer            0           124534
+## 2 Action       Action;FPS;Multiplayer            0             3318
+## 3 Action FPS;World War II;Multiplayer            0             3416
+## 4 Action       Action;FPS;Multiplayer            0             1273
+## 5 Action            FPS;Action;Sci-fi            0             5250
+## 6 Action       Action;FPS;Multiplayer            0             2758
+##   negative_ratings average_playtime median_playtime            owners price
+## 1             3339            17612             317 10000000-20000000  7.19
+## 2              633              277              62  5000000-10000000  3.99
+## 3              398              187              34  5000000-10000000  3.99
+## 4              267              258             184  5000000-10000000  3.99
+## 5              288              624             415  5000000-10000000  3.99
+## 6              684              175              10  5000000-10000000  3.99
+\end{verbatim}
+
+\hypertarget{cantidad-de-juegos-que-hay-en-la-base-de-datos}{%
+\paragraph{Cantidad de juegos que hay en la base de
+datos}\label{cantidad-de-juegos-que-hay-en-la-base-de-datos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{name))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 27033
+\end{verbatim}
+
+\hypertarget{cantidad-de-desarrolladores-que-hay-en-la-base-de-datos}{%
+\paragraph{Cantidad de desarrolladores que hay en la base de
+datos}\label{cantidad-de-desarrolladores-que-hay-en-la-base-de-datos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{developer))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17113
+\end{verbatim}
+
+\hypertarget{cantidad-de-publishers-que-hay-en-la-base-de-datos}{%
+\paragraph{\texorpdfstring{Cantidad de \emph{publishers} que hay en la
+base de
+datos}{Cantidad de publishers que hay en la base de datos}}\label{cantidad-de-publishers-que-hay-en-la-base-de-datos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{publisher))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14354
+\end{verbatim}
+
+\hypertarget{gruxe1fico-con-las-fechas-de-lanzamiento-de-los-juegos}{%
+\paragraph{Gráfico con las fechas de lanzamiento de los
+juegos}\label{gruxe1fico-con-las-fechas-de-lanzamiento-de-los-juegos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{steam}\SpecialCharTok{$}\NormalTok{release\_date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{release\_date)}
+\NormalTok{steam}\SpecialCharTok{$}\NormalTok{year }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{format}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{release\_date, }\StringTok{"\%Y"}\NormalTok{))}
+\FunctionTok{hist}\NormalTok{(steam}\SpecialCharTok{$}\NormalTok{year, }\AttributeTok{main =} \StringTok{"Títulos por año"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Año"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Cantidad"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{hito_1_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\hypertarget{juegos-que-tienen-uno-o-mas-guxe9neros-en-especuxedfico}{%
+\paragraph{Juegos que tienen uno o mas géneros en
+específico}\label{juegos-que-tienen-uno-o-mas-guxe9neros-en-especuxedfico}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{steam2 }\OtherTok{\textless{}{-}}\NormalTok{ steam }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}Action\textquotesingle{}}\NormalTok{, genres))}
+\NormalTok{steam3 }\OtherTok{\textless{}{-}}\NormalTok{ steam }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}Strategy\textquotesingle{}}\NormalTok{, genres)}\SpecialCharTok{\&}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}RPG\textquotesingle{}}\NormalTok{, genres)))}
+\FunctionTok{head}\NormalTok{(steam2, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    appid                           name release_date english        developer
+## 1     10                 Counter-Strike   2000-11-01       1            Valve
+## 2     20          Team Fortress Classic   1999-04-01       1            Valve
+## 3     30                  Day of Defeat   2003-05-01       1            Valve
+## 4     40             Deathmatch Classic   2001-06-01       1            Valve
+## 5     50      Half-Life: Opposing Force   1999-11-01       1 Gearbox Software
+## 6     60                       Ricochet   2000-11-01       1            Valve
+## 7     70                      Half-Life   1998-11-08       1            Valve
+## 8     80 Counter-Strike: Condition Zero   2004-03-01       1            Valve
+## 9    130          Half-Life: Blue Shift   2001-06-01       1 Gearbox Software
+## 10   220                    Half-Life 2   2004-11-16       1            Valve
+##    publisher         platforms required_age
+## 1      Valve windows;mac;linux            0
+## 2      Valve windows;mac;linux            0
+## 3      Valve windows;mac;linux            0
+## 4      Valve windows;mac;linux            0
+## 5      Valve windows;mac;linux            0
+## 6      Valve windows;mac;linux            0
+## 7      Valve windows;mac;linux            0
+## 8      Valve windows;mac;linux            0
+## 9      Valve windows;mac;linux            0
+## 10     Valve windows;mac;linux            0
+##                                                                                                                            categories
+## 1                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 2                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 3                                                                                               Multi-player;Valve Anti-Cheat enabled
+## 4                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 5                                                                                 Single-player;Multi-player;Valve Anti-Cheat enabled
+## 6                                                                           Multi-player;Online Multi-Player;Valve Anti-Cheat enabled
+## 7                                                 Single-player;Multi-player;Online Multi-Player;Steam Cloud;Valve Anti-Cheat enabled
+## 8                                                                                 Single-player;Multi-player;Valve Anti-Cheat enabled
+## 9                                                                                                                       Single-player
+## 10 Single-player;Steam Achievements;Steam Trading Cards;Captions available;Partial Controller Support;Steam Cloud;Includes Source SDK
+##    genres                steamspy_tags achievements positive_ratings
+## 1  Action       Action;FPS;Multiplayer            0           124534
+## 2  Action       Action;FPS;Multiplayer            0             3318
+## 3  Action FPS;World War II;Multiplayer            0             3416
+## 4  Action       Action;FPS;Multiplayer            0             1273
+## 5  Action            FPS;Action;Sci-fi            0             5250
+## 6  Action       Action;FPS;Multiplayer            0             2758
+## 7  Action           FPS;Classic;Action            0            27755
+## 8  Action       Action;FPS;Multiplayer            0            12120
+## 9  Action            FPS;Action;Sci-fi            0             3822
+## 10 Action            FPS;Action;Sci-fi           33            67902
+##    negative_ratings average_playtime median_playtime            owners price
+## 1              3339            17612             317 10000000-20000000  7.19
+## 2               633              277              62  5000000-10000000  3.99
+## 3               398              187              34  5000000-10000000  3.99
+## 4               267              258             184  5000000-10000000  3.99
+## 5               288              624             415  5000000-10000000  3.99
+## 6               684              175              10  5000000-10000000  3.99
+## 7              1100             1300              83  5000000-10000000  7.19
+## 8              1439              427              43 10000000-20000000  7.19
+## 9               420              361             205  5000000-10000000  3.99
+## 10             2419              691             402 10000000-20000000  7.19
+##    year
+## 1  2000
+## 2  1999
+## 3  2003
+## 4  2001
+## 5  1999
+## 6  2000
+## 7  1998
+## 8  2004
+## 9  2001
+## 10 2004
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(steam3, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    appid                                     name release_date english
+## 1   3170          King's Bounty: Armored Princess   2009-11-19       1
+## 2   8500                               EVE Online   2010-12-15       1
+## 3   8880                            Freedom Force   2009-05-29       1
+## 4   8890        Freedom Force vs. the Third Reich   2009-05-29       1
+## 5  10270             Disciples III: Reincarnation   2014-02-14       1
+## 6  17140                               Hinterland   2008-09-30       1
+## 7  23600                          Depths of Peril   2010-11-23       1
+## 8  24400   King Arthur - The Role-playing Wargame   2009-11-24       1
+## 9  24460            King Arthur: Fallen Champions   2011-09-16       1
+## 10 24480 King Arthur II: The Role-Playing Wargame   2012-01-27       1
+##                          developer                       publisher
+## 1              Katauri Interactive                1C Entertainment
+## 2                              CCP                             CCP
+## 3                 Irrational Games                              2K
+## 4                 Irrational Games                              2K
+## 5                           Akella           Kalypso Media Digital
+## 6  Tilted Mill Entertainment, Inc. Tilted Mill Entertainment, Inc.
+## 7             Soldak Entertainment            Soldak Entertainment
+## 8                     NeocoreGames             Paradox Interactive
+## 9                     NeocoreGames             Paradox Interactive
+## 10                    NeocoreGames             Paradox Interactive
+##            platforms required_age
+## 1        windows;mac            0
+## 2        windows;mac            0
+## 3            windows            0
+## 4            windows            0
+## 5            windows            0
+## 6            windows            0
+## 7  windows;mac;linux            0
+## 8            windows            0
+## 9            windows            0
+## 10           windows            0
+##                                                                     categories
+## 1                                                    Single-player;Steam Cloud
+## 2  Multi-player;Online Multi-Player;MMO;Co-op;Online Co-op;Steam Trading Cards
+## 3                                                   Single-player;Multi-player
+## 4                                                   Single-player;Multi-player
+## 5                                                   Single-player;Multi-player
+## 6                                             Single-player;Steam Achievements
+## 7                                                                Single-player
+## 8                                                   Single-player;Multi-player
+## 9                                                                Single-player
+## 10                                            Single-player;Steam Achievements
+##                                                    genres
+## 1                                            RPG;Strategy
+## 2  Action;Free to Play;Massively Multiplayer;RPG;Strategy
+## 3                                            RPG;Strategy
+## 4                                            RPG;Strategy
+## 5                                            RPG;Strategy
+## 6                                            RPG;Strategy
+## 7                                      Indie;RPG;Strategy
+## 8                                            RPG;Strategy
+## 9                                            RPG;Strategy
+## 10                                           RPG;Strategy
+##                         steamspy_tags achievements positive_ratings
+## 1    RPG;Turn-Based Strategy;Strategy            0              482
+## 2  Space;Massively Multiplayer;Sci-fi            0             8317
+## 3              RPG;Strategy;Superhero            0              197
+## 4              RPG;Strategy;Superhero            0              121
+## 5    RPG;Turn-Based Strategy;Strategy            0              618
+## 6                Strategy;RPG;Fantasy            9              113
+## 7                  Strategy;RPG;Indie            0               69
+## 8                Strategy;RPG;Fantasy            0              307
+## 9                Strategy;RPG;Fantasy            0               13
+## 10                   Strategy;RPG;RTS           23              188
+##    negative_ratings average_playtime median_playtime          owners price year
+## 1                53             1422            1429   200000-500000  7.99 2009
+## 2              2832             5123             230 1000000-2000000  0.00 2010
+## 3               150               16              16   200000-500000  2.99 2009
+## 4                28               23              23   200000-500000  2.99 2009
+## 5               252              889             889    50000-100000  9.99 2014
+## 6                38                0               0     20000-50000  6.99 2008
+## 7                24                0               0     20000-50000  6.99 2010
+## 8               113                6               6   200000-500000  7.99 2009
+## 9                20               13              13    50000-100000  3.99 2011
+## 10              169               46              46   100000-200000  7.99 2012
+\end{verbatim}
+
+\hypertarget{juegos-que-poseen-alguxfan-guxe9nero-en-especificos}{%
+\paragraph{Juegos que poseen algún género en
+especificos}\label{juegos-que-poseen-alguxfan-guxe9nero-en-especificos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{steam4 }\OtherTok{\textless{}{-}}\NormalTok{ steam }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}Strategy|Action\textquotesingle{}}\NormalTok{, genres))}
+\FunctionTok{head}\NormalTok{(steam4,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    appid                           name release_date english        developer
+## 1     10                 Counter-Strike   2000-11-01       1            Valve
+## 2     20          Team Fortress Classic   1999-04-01       1            Valve
+## 3     30                  Day of Defeat   2003-05-01       1            Valve
+## 4     40             Deathmatch Classic   2001-06-01       1            Valve
+## 5     50      Half-Life: Opposing Force   1999-11-01       1 Gearbox Software
+## 6     60                       Ricochet   2000-11-01       1            Valve
+## 7     70                      Half-Life   1998-11-08       1            Valve
+## 8     80 Counter-Strike: Condition Zero   2004-03-01       1            Valve
+## 9    130          Half-Life: Blue Shift   2001-06-01       1 Gearbox Software
+## 10   220                    Half-Life 2   2004-11-16       1            Valve
+##    publisher         platforms required_age
+## 1      Valve windows;mac;linux            0
+## 2      Valve windows;mac;linux            0
+## 3      Valve windows;mac;linux            0
+## 4      Valve windows;mac;linux            0
+## 5      Valve windows;mac;linux            0
+## 6      Valve windows;mac;linux            0
+## 7      Valve windows;mac;linux            0
+## 8      Valve windows;mac;linux            0
+## 9      Valve windows;mac;linux            0
+## 10     Valve windows;mac;linux            0
+##                                                                                                                            categories
+## 1                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 2                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 3                                                                                               Multi-player;Valve Anti-Cheat enabled
+## 4                                                        Multi-player;Online Multi-Player;Local Multi-Player;Valve Anti-Cheat enabled
+## 5                                                                                 Single-player;Multi-player;Valve Anti-Cheat enabled
+## 6                                                                           Multi-player;Online Multi-Player;Valve Anti-Cheat enabled
+## 7                                                 Single-player;Multi-player;Online Multi-Player;Steam Cloud;Valve Anti-Cheat enabled
+## 8                                                                                 Single-player;Multi-player;Valve Anti-Cheat enabled
+## 9                                                                                                                       Single-player
+## 10 Single-player;Steam Achievements;Steam Trading Cards;Captions available;Partial Controller Support;Steam Cloud;Includes Source SDK
+##    genres                steamspy_tags achievements positive_ratings
+## 1  Action       Action;FPS;Multiplayer            0           124534
+## 2  Action       Action;FPS;Multiplayer            0             3318
+## 3  Action FPS;World War II;Multiplayer            0             3416
+## 4  Action       Action;FPS;Multiplayer            0             1273
+## 5  Action            FPS;Action;Sci-fi            0             5250
+## 6  Action       Action;FPS;Multiplayer            0             2758
+## 7  Action           FPS;Classic;Action            0            27755
+## 8  Action       Action;FPS;Multiplayer            0            12120
+## 9  Action            FPS;Action;Sci-fi            0             3822
+## 10 Action            FPS;Action;Sci-fi           33            67902
+##    negative_ratings average_playtime median_playtime            owners price
+## 1              3339            17612             317 10000000-20000000  7.19
+## 2               633              277              62  5000000-10000000  3.99
+## 3               398              187              34  5000000-10000000  3.99
+## 4               267              258             184  5000000-10000000  3.99
+## 5               288              624             415  5000000-10000000  3.99
+## 6               684              175              10  5000000-10000000  3.99
+## 7              1100             1300              83  5000000-10000000  7.19
+## 8              1439              427              43 10000000-20000000  7.19
+## 9               420              361             205  5000000-10000000  3.99
+## 10             2419              691             402 10000000-20000000  7.19
+##    year
+## 1  2000
+## 2  1999
+## 3  2003
+## 4  2001
+## 5  1999
+## 6  2000
+## 7  1998
+## 8  2004
+## 9  2001
+## 10 2004
+\end{verbatim}
+
+\hypertarget{juegos-que-no-poseen-alguno-o-mas-guxe9neros-en-especificos}{%
+\paragraph{Juegos que no poseen alguno o mas géneros en
+especificos}\label{juegos-que-no-poseen-alguno-o-mas-guxe9neros-en-especificos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{steam5 }\OtherTok{\textless{}{-}}\NormalTok{ steam }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}Action\textquotesingle{}}\NormalTok{, genres))}
+\NormalTok{steam6 }\OtherTok{\textless{}{-}}\NormalTok{ steam }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{grepl}\NormalTok{(}\StringTok{\textquotesingle{}Strategy|Action\textquotesingle{}}\NormalTok{, genres))}
+\FunctionTok{head}\NormalTok{(steam5, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    appid                                name release_date english
+## 1   1002                    Rag Doll Kung Fu   2005-10-12       1
+## 2   1500                            Darwinia   2005-07-14       1
+## 3   1510                              Uplink   2006-08-23       1
+## 4   1520                              DEFCON   2006-09-29       1
+## 5   1530                          Multiwinia   2008-09-19       1
+## 6   1600                    Dangerous Waters   2006-02-07       1
+## 7   1610             Space Empires IV Deluxe   2006-02-07       1
+## 8   1630    Disciples II: Rise of the Elves    2006-07-06       1
+## 9   1640      Disciples II: Gallean's Return   2006-07-06       1
+## 10  1670 Iron Warriors: T - 72 Tank Command    2006-07-26       1
+##                developer             publisher         platforms required_age
+## 1            Mark Healey           Mark Healey           windows            0
+## 2  Introversion Software Introversion Software windows;mac;linux            0
+## 3  Introversion Software Introversion Software windows;mac;linux            0
+## 4  Introversion Software Introversion Software windows;mac;linux            0
+## 5  Introversion Software Introversion Software       windows;mac            0
+## 6              Sonalysts        Strategy First           windows            0
+## 7  Malfador Machinations        Strategy First           windows            0
+## 8         Strategy First        Strategy First           windows            0
+## 9         Strategy First        Strategy First           windows            0
+## 10        Strategy First        Strategy First           windows            0
+##                                       categories         genres
+## 1                     Single-player;Multi-player          Indie
+## 2                                  Single-player Indie;Strategy
+## 3                                  Single-player Indie;Strategy
+## 4                     Single-player;Multi-player Indie;Strategy
+## 5  Single-player;Multi-player;Steam Achievements          Indie
+## 6                     Single-player;Multi-player       Strategy
+## 7                     Single-player;Multi-player       Strategy
+## 8               Single-player;Multi-player;Co-op       Strategy
+## 9               Single-player;Multi-player;Co-op       Strategy
+## 10                    Single-player;Multi-player       Strategy
+##                           steamspy_tags achievements positive_ratings
+## 1            Indie;Fighting;Multiplayer            0               40
+## 2                    Strategy;Indie;RTS            0              472
+## 3                Hacking;Indie;Strategy            0             1602
+## 4            Strategy;Indie;Multiplayer           22             2057
+## 5                    Indie;RTS;Strategy           12              368
+## 6             Strategy;Simulation;Naval            0              140
+## 7                    Strategy;4X;Sci-fi            0              112
+## 8  Strategy;Turn-Based Strategy;Fantasy            0              451
+## 9  Turn-Based Strategy;Strategy;Classic            0              490
+## 10            Simulation;Strategy;Tanks            0              137
+##    negative_ratings average_playtime median_playtime         owners price year
+## 1                17                0               0    20000-50000  5.99 2005
+## 2               158              182             273 500000-1000000  7.19 2005
+## 3               152               65              77 500000-1000000  6.99 2006
+## 4               344               80             119 500000-1000000  7.19 2006
+## 5                75              121             224 500000-1000000  7.19 2008
+## 6                44                0               0   50000-100000 22.99 2006
+## 7                26                0               0   50000-100000  6.99 2006
+## 8               108                0               0  100000-200000  4.99 2006
+## 9               152                9              12  100000-200000  4.99 2006
+## 10              102                0               0    20000-50000  3.99 2006
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(steam6, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    appid                                       name release_date english
+## 1   1002                           Rag Doll Kung Fu   2005-10-12       1
+## 2   1530                                 Multiwinia   2008-09-19       1
+## 3   1700                                Arx Fatalis   2007-04-03       1
+## 4   1840                           Source Filmmaker   2012-07-10       1
+## 5   1930                    Two Worlds Epic Edition   2009-04-30       1
+## 6   2520                 Gumboy - Crazy Adventures™   2006-12-19       1
+## 7   2990                                 FlatOut 2™   2006-12-21       1
+## 8   3010                                Xpand Rally   2006-08-24       1
+## 9   3050                         Xpand Rally Xtreme   2008-10-08       1
+## 10  3260 Safecracker: The Ultimate Puzzle Adventure   2007-08-29       1
+##                developer             publisher         platforms required_age
+## 1            Mark Healey           Mark Healey           windows            0
+## 2  Introversion Software Introversion Software       windows;mac            0
+## 3         Arkane Studios        Arkane Studios           windows            0
+## 4                  Valve                 Valve           windows            0
+## 5   Reality Pump Studios   Topware Interactive windows;mac;linux            0
+## 6        CINEMAX, s.r.o.       CINEMAX, s.r.o.           windows            0
+## 7  Bugbear Entertainment        Strategy First           windows            0
+## 8               Techland              Techland           windows            0
+## 9               Techland              Techland           windows            0
+## 10         Kheops Studio            HandyGames           windows            0
+##                                                                                                                               categories
+## 1                                                                                                             Single-player;Multi-player
+## 2                                                                                          Single-player;Multi-player;Steam Achievements
+## 3                                                                                                                          Single-player
+## 4                                                                                                                         Steam Workshop
+## 5  Single-player;Multi-player;Online Multi-Player;Online Co-op;Cross-Platform Multiplayer;Steam Trading Cards;Partial Controller Support
+## 6                                                                                                                          Single-player
+## 7                                                                                                                          Single-player
+## 8                                                                                                             Single-player;Multi-player
+## 9                                                                                                             Single-player;Multi-player
+## 10                                                                                                                         Single-player
+##                                   genres
+## 1                                  Indie
+## 2                                  Indie
+## 3                                    RPG
+## 4  Animation & Modeling;Video Production
+## 5                                    RPG
+## 6                           Casual;Indie
+## 7                                 Racing
+## 8                                 Racing
+## 9                                 Racing
+## 10                      Adventure;Casual
+##                                         steamspy_tags achievements
+## 1                          Indie;Fighting;Multiplayer            0
+## 2                                  Indie;RTS;Strategy           12
+## 3                            RPG;First-Person;Classic            0
+## 4  Animation & Modeling;Video Production;Free to Play            0
+## 5                              RPG;Open World;Fantasy            0
+## 6                           Casual;Indie;Singleplayer            0
+## 7                      Racing;Destruction;Multiplayer            0
+## 8                                  Racing;Multiplayer            0
+## 9                           Racing;Offroad;Simulation            0
+## 10                            Puzzle;Adventure;Casual            0
+##    positive_ratings negative_ratings average_playtime median_playtime
+## 1                40               17                0               0
+## 2               368               75              121             224
+## 3               671              106               11              21
+## 4             15083             1111              239              77
+## 5              2656             1055              484             422
+## 6                52               46                0               0
+## 7              5438              343              293             351
+## 8               139               39              939             939
+## 9                71               36                0               0
+## 10              256              172                1               1
+##             owners price year
+## 1      20000-50000  5.99 2005
+## 2   500000-1000000  7.19 2008
+## 3    100000-200000  2.99 2007
+## 4  1000000-2000000  0.00 2012
+## 5  1000000-2000000  6.99 2009
+## 6     50000-100000  0.00 2006
+## 7   500000-1000000  5.99 2006
+## 8      20000-50000  3.99 2006
+## 9      20000-50000  3.99 2008
+## 10    50000-100000  4.49 2007
+\end{verbatim}
+
+\hfill\break
+
+\hypertarget{contribuciones-de-cada-miembro-del-equipo}{%
+\subsection{Contribuciones de cada miembro del
+equipo}\label{contribuciones-de-cada-miembro-del-equipo}}
+
+Vicente Guzmán estuvo a cargo de la creación del GitHub en el cual se
+almacena el dataset y el informe en R. Ayudó en la creación del código
+fuente.\\
+Ignacio Muñoz creó la presentación del hito 1, junto con aportar en la
+creación de preguntas y motivación.\\
+José Arriagada ayudó en la motivación y en la creación de las preguntas
+y sus hipótesis.\\
+Nicolás González halló y buscó solución para el problema a futuro de
+trabajar con el dataset. Además, aportó en la sección de motivación.\\
+Javier Atenas creó los documentos y carpetas iniciales del proyecto.
+Aportó en la sección de preguntas y problemas, junto a las hipótesis de
+estos mismos.
+
+\end{document}

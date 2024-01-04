@@ -1,0 +1,133 @@
+---
+title: "Hito 1 - Grupo 11"
+author: "Vicente Guzmán, Ignacio Muñoz, José Arriagada, Nicolás Gonzalez y Javier Atenas"
+date: "24 de Abril 2023"
+output:
+  html_document:
+    number_sections: no
+    theme: spacelab
+    toc: yes
+  pdf_document:
+    toc: yes
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+CC5205 - Minería de Datos  
+Prof. Felipe Bravo y Hernán Sarmiento
+\
+
+# Introducción
+
+Steam es la plataforma líder de distribución digital de videojuegos en PC, y este mercado cada vez tiene más consumidores y va ganando terreno por sobre otras formas de entretención.
+Esto lo demuestra su co-fundador Gabe Newell, el cual con su plataforma es uno de los 1000 hombres más ricos del mundo.
+Siendo este un mercado en constante cambio con millones de usuarios, vale la pena investigar sobre su contenido, junto a sus ascensos y caídas.
+Estudiar este dataset podría ayudar a entender las preferencias en el mercado de los videojuegos, cuáles son los más vendidos y cuáles tienen las mejores valoraciones, entre otros estudios.
+\
+
+# Exploración de Datos
+
+Este dataset posee datos de más de 27.000 juegos y algunos pocos softwares estrenados hasta el 2019 en formato CSV.
+Tiene datos como el nombre, la descripción, la categoría, el género, los logros de cada juego, la fecha de lanzamiento, el desarrollador, el *publisher*, la edad requerida para jugar el juego, la cantidad de gente que posee el juego, el precio, el promedio del tiempo de juego de los usuarios y la puntuación positivas y negativa de los usuarios.
+Por como está definido este dataset, la columna "género", al ser de tipo string, cualquier dato que se encuentre es un tipo diferente, a menos que sea exactamente igual a otro.
+(Ej: "action" es un género diferente a "action;Indie", a pesar de que a nuestro entendimiento, si son del mismo género).
+Por lo que si se quisiera revisar todos los juegos que sean del género "action", saldrían solamente aquellos juegos que tuviesen como único género "action".
+Esto ocurre con varias columnas, por lo que a futuro, se tendrá que modificar o encontrar una forma, para lograr encontrar de manera efectiva varios datos específicos que quisiéramos ver.
+\
+
+# Preguntas y Problemas
+
+-   ¿Cuáles son los géneros que generan más ingresos?
+
+-   ¿Qué géneros tienen un mejor porcentaje de reviews positivas?
+
+-   ¿Existe una relación entre el tiempo promedio de juego y sus reviews?  
+    Hipótesis: Hay una relación directa entre las reviews de un juego y tiempo de juego, ya que si un jugador no disfruta un juego y le escribe una mala review, tampoco querrá jugarlo, por lo tanto los juegos con altos tiempos de juego tendrán mejores reviews.
+
+-   ¿Qué relación hay entre el precio de un juego y su tiempo de juego promedio?  
+    Hipótesis: Hay una relación directa entre el precio de un juego y tiempo de juego, ya que los usuarios "harán valer" el dinero invertido, haciendo que jueguen un juego caro mucho más que uno gratis, para sentir que valió la pena.
+
+-   ¿Los juegos con más logros tienen más tiempo de juego que los juegos con menos logros?
+
+-   ¿Los *publishers* influyen en la cantidad de ventas de un juego?  
+    Hipótesis: Si, pues los *publishers* más conocidos harán que el juego se destaque más en el mercado, pues da el sello de garantía de que ellos lo aprobaron, y si la gente confía en ellos, confiarán en este nuevo juego.
+    Mientras que los *indies* tienen menos base de publicidad.
+    \
+
+# Contribuciones de cada miembro del equipo
+
+Vicente Guzmán estuvo a cargo de la creación del GitHub en el cual se almacena el dataset y el informe en R.
+Ayudó en la creación del código fuente.\
+Ignacio Muñoz creó la presentación del hito 1, junto con aportar en la creación de preguntas y motivación.\
+José Arriagada ayudó en la motivación y en la creación de las preguntas y sus hipótesis.\
+Nicolás González halló y buscó solución para el problema a futuro de trabajar con el dataset.
+Además, aportó en la sección de motivación.\
+Javier Atenas creó los documentos y carpetas iniciales del proyecto.
+Aportó en la sección de preguntas y problemas, junto a las hipótesis de estos mismos.
+\
+
+# Código Fuente
+
+Se anexa el código fuente utilizado para la exploración de datos con su respectiva función.
+
+#### Dataset de los juegos de Steam
+
+```{r}
+# Asignamos nuestro "working directory" (set w. d.) como el directorio ~/RDATA
+wd <- file.path(getwd(), "db")
+setwd(wd)
+steam <- read.csv("steam.csv")
+head(steam)
+```
+
+#### Cantidad de juegos que hay en la base de datos
+
+```{r}
+length(unique(steam$name))
+```
+
+#### Cantidad de desarrolladores que hay en la base de datos
+
+```{r}
+length(unique(steam$developer))
+```
+
+#### Cantidad de *publishers* que hay en la base de datos
+
+```{r}
+length(unique(steam$publisher))
+```
+
+#### Gráfico con las fechas de lanzamiento de los juegos
+
+```{r}
+steam$release_date <- as.Date(steam$release_date)
+steam$year <- as.numeric(format(steam$release_date, "%Y"))
+hist(steam$year, main = "Títulos por año", xlab = "Año", ylab = "Cantidad")
+```
+
+#### Juegos que tienen uno o mas géneros en específico
+
+```{r}
+library(dplyr)
+steam2 <- steam %>% filter(grepl('Action', genres))
+steam3 <- steam %>% filter(grepl('Strategy', genres)&(grepl('RPG', genres)))
+head(steam2, 10)
+head(steam3, 10)
+```
+
+#### Juegos que poseen algún género en especificos
+
+```{r}
+steam4 <- steam %>% filter(grepl('Strategy|Action', genres))
+head(steam4,10)
+```
+
+#### Juegos que no poseen alguno o mas géneros en especificos
+
+```{r}
+steam5 <- steam %>% filter(!grepl('Action', genres))
+steam6 <- steam %>% filter(!grepl('Strategy|Action', genres))
+head(steam5, 10)
+head(steam6, 10)
+```
